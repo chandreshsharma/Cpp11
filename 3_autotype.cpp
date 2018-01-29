@@ -14,8 +14,10 @@ The 'auto' type automatically derives the type based on the RHS variable.
 
 ******/
 
-typedef std::pair<int, std::string> IntToStrPair;
-typedef std::map <int, std::string> IntToStrMap;
+//typedef std::pair<int, std::string> IntToStrPair;
+//typedef std::map <int, std::string> IntToStrMap;
+using IntToStrPair = std::pair<int, std::string>;
+using IntToStrMap = std::map <int, std::string>;
 
 
 void PRINTMAP(std::map<int, std::string> & myMap)
@@ -62,6 +64,5 @@ int main()
 	for(auto val: fLis) std::cout << val << ", ";
 
 	std::cout << std::endl;
-	return 0;
 }
 

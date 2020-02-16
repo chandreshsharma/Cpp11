@@ -12,13 +12,18 @@ The 'auto' type automatically derives the type based on the RHS variable.
 
 'for each' allows to work on each item of the container, and works on any container that has a begin() and end()
 
+Reference: cppreference.com
+
+for ( range_declaration : range_expression ) loop_statement
+
+    range_declaration - a declaration of a named variable, whose type is the type of the element of the sequence represented by range_expression, or a reference to that type. 
+                        Often uses the auto specifier for automatic type deduction
+    range_expression  - any expression that represents a suitable sequence (either an array or an object for which begin and end member functions or free functions are defined) 
+                        or a braced-init-list.
 ******/
 
-//typedef std::pair<int, std::string> IntToStrPair;
-//typedef std::map <int, std::string> IntToStrMap;
 using IntToStrPair = std::pair<int, std::string>;
 using IntToStrMap = std::map <int, std::string>;
-
 
 void PRINTMAP(std::map<int, std::string> & myMap)
 {
@@ -31,13 +36,20 @@ void PRINTMAP(std::map<int, std::string> & myMap)
 	}
     std::cout << std::endl;
 
+    // Range based for loop.
+    // For each element fetched as variable pr, when iterating the container myMap
 	std::cout << "\nTraversing map using for each and auto" << std::endl;
-
 	for(auto pr: myMap)
 	{
         std::cout << "[" << pr.first << ", " << pr.second << "], ";
 	}
+    std::cout << std::endl;
 
+	std::cout << "\nTraversing map using const reference" << std::endl;
+	for(const IntToStrPair & p: myMap)
+	{
+        std::cout << "[" << p.first << ", " << p.second << "], ";
+	}
     std::cout << std::endl;
 }
 

@@ -16,14 +16,31 @@ float f = 4.5;      // float literal
 char c  = 'C';      // character literal
 char* s = "Create"; // String literal
 
+
+User-defined literal is an expression of any of the following forms
+
+decimal-literal ud-suffix   (1) 
+octal-literal   ud-suffix (2) 
+hex-literal     ud-suffix   (3) 
+binary-literal  ud-suffix    (4) 
+fractional-constant exponent-part(optional) ud-suffix   (5) 
+digit-sequence      exponent-part           ud-suffix  (6) 
+character-literal   ud-suffix (7) 
+string-literal      ud-suffix    (8) 
+
+Examples:
+1-4) user-defined integer literals, such as 12_km
+5-6) user-defined floating-point literals, such as 0.5_Pa
+7) user-defined character literal, such as 'c'_X
+8) user-defined string literal, such as "abd"_L or u"xyz"_M
+
 ***/
 
 
 
 /***************************************** String Literal definitions **********************************/
 
-// C++ 11 allows literals to be qualified with user defined names/extensions so that
-// the values they represent are more clear logically.
+// C++ 11 allows user defined names/extensions to be qualified with literals so the values represented are more clear logically.
 
 
 // NOTE:
@@ -50,9 +67,9 @@ long int operator "" _bin(const char* str, unsigned int size)
 	
     long int ret = 0;
 
-    for(int i=0; i<size; ++i)   // On each iteration the number is left shifted by 1
+    for(int i=0; i<size; ++i)
     {
-        ret = ret << 1;
+        ret = ret << 1;   // On each iteration the number is left shifted by 1
 
         if(str[i] == '1')
             ret += 1;
@@ -74,15 +91,15 @@ int main()
 // Height
     long double height = 3.4_cm;        //  The _cm indicates that the height is in terms of cms and 
                                         //  would get converted to the default base of millimeters
-    print(height); 
+    std::cout << "3.4_cm: "; print(height); 
 
     long double h1 = 6.0_m;             // specifies the height in meters.
-    print(h1);
+    std::cout << "6.0_m: "; print(h1);
 
-    print(3.25_m + 0.3_mm);             // Prints and expression with each of the user defined literals.
+    std::cout << "(3.25_m + 0.3_mm): "; print(3.25_m + 0.3_mm);             // Prints and expression with each of the user defined literals.
     print(1.23_m + 4.5_cm + 0.67_mm);
 
-    print(1300.0_mm / 3.0_m);
+    std::cout << "print(1300.0_mm / 3.0_m): "; print(1300.0_mm / 3.0_m);
 
 
 // Binary Numbers

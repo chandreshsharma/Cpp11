@@ -15,8 +15,13 @@ Methods:
 
 weak_ptr::use_count() 	returns the reference count for the weak_ptr objects pointing to the object.
 weak_ptr::expired()   	Returns whether the weak_ptr object is either empty OR 
-						there are no more shared_ptr in the owner group it belongs to..
+						there are no more shared_ptr in the owner group it belongs to.
 weak_ptr::lock()    	Returns a shared_ptr with the information preserved by the weak_ptr object if it is not expired.
+
+Use weak_ptr works as a temporary ownership, to allow access to an object only if it exists.
+
+weak_ptr is converted to shared_ptr to get a temporary ownership of the object.
+If the original shared_ptr object goes out of scope or is destroyed, the object's lifetime is extended till the shared_ptr persists.
 
 *****/
 

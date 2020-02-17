@@ -7,6 +7,7 @@
 /*********
 A program to understand Regular Expressions in C++
 
+A regular expression object defines a particular pattern to be matched against a sequence of characters using the standard regex library.
 The syntax of the Regular expressions offerred in C++11 matches the ones found in Shell, Python etc.
 
 C++ 11 provides different regular expression grammer, that can be used.
@@ -80,11 +81,12 @@ void matchPattern()
         //    std::regex r("pqr+", std::regex_constants::icase);    // A '+' matches one or more occurance(s) of the preceding character
 
         //    std::regex r("pq[rs]*", std::regex_constants::icase); // Square brackets [...] match a character within the brackets
-        // A * following the [...] matches the character for zero or more occurances.
+        //    A * following the [...] matches the character for zero or more occurances.
 
-        //    std::regex r("pq[^rs]*", std::regex_constants::icase);// Square brackets beginning with [^...] match a characte not contained 
-        // within the brackets
-        // A * following the [...] matches the character for zero or more occurances.
+        //    std::regex r("pq[^rs]*", std::regex_constants::icase);// Square brackets beginning with [^...] match a character not contained 
+        //    within the brackets
+
+        //    A * following the [...] matches the character for zero or more occurances.
 
         //    std::regex r("pq[rs]{2}", std::regex_constants::icase); // Parenthesis after braces match exactly n occurances of the letters
 
@@ -95,7 +97,7 @@ void matchPattern()
         //    std::regex r("pqr|st[\"uv]");       // Will match either pqr OR st" OR stu OR stv
 
         //    std::regex r("(pqr)st+\\1");        // The parenthesis match a group and a \\n indicates the re-occurance of the group
-        // The above pattern would match [pqrs'one or more occurances of t'pqr] group again
+        //    The above pattern would match [pqrs'one or more occurances of t'pqr] group again
 
         //    std::regex r("(pqr)st(lm)uv\\2\\1");  // The only pattern that matches is 'pqrstlmuvlmpqr'
 

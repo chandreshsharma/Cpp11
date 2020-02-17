@@ -18,7 +18,7 @@ shared_ptr::operator * (dereference) is overloaded to point to the object(raw po
 
 NOTE: Avoid using the raw pointer once you have created a shared_ptr for the same.
 
-// A raw pointer can be cast to another pointer. shared_ptr provides the same drawtionality using,
+// A raw pointer can be cast to another pointer. shared_ptr provides the same functionality using,
 // static_pointer_cast
 // dynamic_pointer_cast
 // const_pointer_cast
@@ -74,7 +74,7 @@ int main()
     std::cout << "----------------- sp4 ----------------" << std::endl;
     print(sp4);
 
-    sp3 = sp4;      // sp3 gets deleted AND sp3 now points to sp4
+    sp3 = sp4;      // sp3 and sp4 point to the same raw pointer, with the reference count incremented.
     std::cout << "After sp3 = sp4, sp3.get(): " << sp3.get() <<  ",sp3.use_count():" << sp3.use_count() 
               << ", sp4.get(): " << sp4.get() << ", sp4.use_count(): " << sp4.use_count()  << std::endl;
 
@@ -105,7 +105,6 @@ int main()
 
 // In case the custom deletor had not been defined a normal delete would have been called resulting in freeing up
 // only the first element spArr[0] and leaking the rest of the array elements
-
 
 
 #if 0   // 1. An object should be assigned to a shared_ptr as soon as it is created.

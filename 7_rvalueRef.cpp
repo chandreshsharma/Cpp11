@@ -5,6 +5,11 @@
 
 The program demonstrates the usage of the C++ feature of 'rvalue reference'.
 
+1) Lvalue reference declarator: the declaration S& D; declares D as an lvalue reference to the type determined by decl-specifier-seq S.
+2) Rvalue reference declarator: the declaration S&& D; declares D as an rvalue reference to the type determined by decl-specifier-seq S.
+
+declarator	-	any declarator except another reference declarator (there are no references to references)
+
 ****/
 
 
@@ -142,23 +147,23 @@ MyIntVec getIntVec()
     return MyIntVec();  // This is the temporary value returned.
 }
 
+void func(int& x)   {
+    std::cout << "lvalue reference version func(int& x) called " << x << std::endl;
+}
+ 
+void func(const int& x) {
+    std::cout << "lvalue reference to const version func(const int& x) called " << x << std::endl;
+}
+ 
+void func(int&& x) {
+    std::cout << "rvalue reference version func(int&& x) called " << x << std::endl;
+}
+ 
+
 /********* Main *********/
 
 int main()
 {
-
-#if 0
-    int a  = 10;    // a is an lvalue
-    int& b = a;     // b is an lvalue reference (reference)
-
-//  int&& c;     // c is an rvalue reference.
-
-    intRef(a);      // a is an lvalue
-    intRef(b);      // b is an lvalue, alias for a
-
-    intRef(30);     // 30 is a constant and an rvalue.
-
-#endif
 
 /*****
 std::move:
@@ -191,7 +196,22 @@ std::move:
     
     myVec2 = myVec;                     // Calls the Assignment operator with Copy Semantics
 
-//    MyIntVec myVec2; myVec2 = MyIntVec();
+// integers using overloaded func()
+    std::cout<< "=================== integers ======================" << std::endl;
+
+    int n = 10;				// n is lvalue
+    const int cn = 20;		// cn is lvalue for const int.
+	
+    func(n);  				// calls func(int&)
+    func(cn); 				// calls func(const int&)
+    func(30);  				// calls func(int&&)
+							// would call func(const int&) if func(int&&) overload wasn't provided
+    
+	func(std::move(n)); 	// calls func(int&&)
+     
+    int&& a = 1;			// rvalue reference variables are lvalues when used in expressions
+    func(a);            	// calls func(int& x)
+    func(std::move(a)); 	// calls func(int&& x)
 
     return 0;
 }

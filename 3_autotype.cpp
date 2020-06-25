@@ -73,8 +73,23 @@ int main()
 	fLis.push_back(9.012);
 
 	std::cout << std::endl;
-	for(auto val: fLis) std::cout << val << ", ";
 
+	for(auto val: fLis) std::cout << val << ", ";
 	std::cout << std::endl;
+
+
+    // Using std::initializer_list<> in for each
+    // The std::initializer_list<> defines the begin() and end() methods, so the for each can use the initializer_list
+
+    std::cout <<  "\nfor each(...) using std::initializer_list<>:  " << std::endl;
+    for(auto i: {1, 2, 3, 4, 5})
+        std::cout << i << ", "; std::cout << std::endl;
+
+    std::initializer_list<std::string> strIL {"A", "Initializer", "list", "of", "strings" };
+
+    for(auto s : strIL)
+        std::cout << s << " "; std::cout << std::endl;
+    
+    return 0;
 }
 

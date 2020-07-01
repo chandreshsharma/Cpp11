@@ -13,6 +13,9 @@
     
     captures:   defines the list of comma separated variables(known as captures) defined outside the lambda, 
                 that need to be accessed from within the lambda function body.
+
+                By default the variables of the outer scope that define the lambda are not accessible within the lambda.
+                To allow access you need to capture the variable in the 'capture list' OR 'captures'.
     
                 The default capture can be defined of type reference or value(a copy)
                 [&] (capture the outer scope variables by reference) and

@@ -3,10 +3,12 @@
 #include <limits>
 #include <algorithm>
 #include <list>
+#include <functional>
 
 /******
 
     A program to use lambdas with STL containers and User defined Classes.
+    It also shows how to use the std::function() to point to a lambda function.
 
 ******/
 
@@ -23,6 +25,13 @@ public:
     
     int ft() { return _feet; }
 };
+
+std::function<int(int, int)> larger()
+{
+    std::cout << "inside larger" << std::endl;
+
+    return [] (int x, int y) -> int { return ( x > y ? x : y); };
+} 
 
 int main() {
 
@@ -78,6 +87,24 @@ int main() {
     }
 
     std::cout << std::endl;
+
+/// Use the lambda to point to the function wrapper created using std::function 
+
+    int i=10, j=20;
+
+    // Function that accepts two integers and returns an integer
+    // This though is an overhead since the lambda can be called directly, without binding it to the wrapper.
+
+    std::function<int(int,int)> bigger = [] (int x, int y) { return ( x > y ? x : y); };
+
+    std::cout << "bigger: " << bigger(i,j) << std::endl;  
+    std::cout << "bigger: " << bigger(200, 100) << std::endl;  
+
+    auto l = larger();
+
+    std::cout << "larger: " << l(i,j) << std::endl;  
+    std::cout << "larger: " << l(200, 100) << std::endl;  
+    std::cout << "larger: " << l(200, 1000) << std::endl;  
 
     return 0;
 }

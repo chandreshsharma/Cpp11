@@ -43,7 +43,6 @@ of the alias template for the template parameters in the type-id.
 template <class T>
 void PRINT(T & cont);
 
-
 template <class T>
 using Vec = std::vector<T>;
 
@@ -88,8 +87,10 @@ int main()
 template <class T>
 void PRINT(T & cont)
 {
-	typename T::iterator i = cont.begin(); // typename instructs the compiler to treat the statement as a declaration
+	typename T::iterator i = cont.begin();  // typename instructs the compiler to treat the statement as a declaration
 
+                                            // typename is used to clarify that the subtype 'iterator' is a type defined within the class T
+                                            // Without typename iterator would be considered a static member.
 	/*
 	   COMPILER ERROR:
 
@@ -106,7 +107,6 @@ void PRINT(T & cont)
 }
 
 void PRINTMAP(IntToStrMap & myMap)
-//void PRINTMAP(std::map<int, std::string> & myMap)
 {
 	for(std::map<int, std::string>::iterator i=myMap.begin(); i != myMap.end(); ++i)
 		std::cout << "[" << i->first << ", " << i->second << "], "; 

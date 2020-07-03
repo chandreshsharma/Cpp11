@@ -4,22 +4,25 @@
 #include <string>
 #include <map>
 #include <list>
+#include <typeinfo>
 
 /******
+    The program demonstrates the use of the 'auto' type and 'for each' in C++ 11
+    
+    The 'auto' type automatically derives the type based on the RHS variable. 
+    The type of the variable will be automatically deduced from its initializer.
 
-The program demonstrates the use of the 'auto' type and 'for each' in C++ 11
-The 'auto' type automatically derives the type based on the RHS variable.
+    'for each' allows to work on each item of the container, and works on any container that has a begin() and end()
 
-'for each' allows to work on each item of the container, and works on any container that has a begin() and end()
+    Reference: cppreference.com
 
-Reference: cppreference.com
+    for ( range_declaration : range_expression ) loop_statement
 
-for ( range_declaration : range_expression ) loop_statement
-
-    range_declaration - a declaration of a named variable, whose type is the type of the element of the sequence represented by range_expression, or a reference to that type. 
-                        Often uses the auto specifier for automatic type deduction
-    range_expression  - any expression that represents a suitable sequence (either an array or an object for which begin and end member functions or free functions are defined) 
-                        or a braced-init-list.
+        range_declaration - a declaration of a named variable, whose type is the type of the element of the sequence represented by range_expression, 
+        or a reference to that type. 
+        Often uses the auto specifier for automatic type deduction
+        range_expression  - any expression that represents a suitable sequence (either an array or an object for which begin and end member functions 
+        or free functions are defined) or a braced-init-list.
 ******/
 
 using IntToStrPair = std::pair<int, std::string>;
@@ -52,7 +55,6 @@ void PRINTMAP(std::map<int, std::string> & myMap)
 	}
     std::cout << std::endl;
 }
-
 
 
 int main()
@@ -89,7 +91,7 @@ int main()
 
     for(auto s : strIL)
         std::cout << s << " "; std::cout << std::endl;
-    
+
     return 0;
 }
 

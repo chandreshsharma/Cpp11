@@ -1,8 +1,11 @@
 #include <iostream>
+#include <iomanip>
 
 /****
 
-The program demonstrates the usage of the C++ feature of 'User Defined Literals'.
+    The program demonstrates the usage of the C++ feature of 'User Defined Literals'.
+
+    It also shows the explicit initialization of fundamental data types.
 
 ****/
 
@@ -11,28 +14,29 @@ The program demonstrates the usage of the C++ feature of 'User Defined Literals'
 
 Literals in C++ 98
 
-int i   = 50;       // int literal
-float f = 4.5;      // float literal
-char c  = 'C';      // character literal
-char* s = "Create"; // String literal
+    int i   = 50;       // int literal
+    float f = 4.5;      // float literal
+    char c  = 'C';      // character literal
+    char* s = "Create"; // String literal
 
 
 User-defined literal is an expression of any of the following forms
 
-decimal-literal ud-suffix   (1) 
-octal-literal   ud-suffix (2) 
-hex-literal     ud-suffix   (3) 
-binary-literal  ud-suffix    (4) 
-fractional-constant exponent-part(optional) ud-suffix   (5) 
-digit-sequence      exponent-part           ud-suffix  (6) 
-character-literal   ud-suffix (7) 
-string-literal      ud-suffix    (8) 
+    decimal-literal ud-suffix   (1) 
+    octal-literal   ud-suffix (2) 
+    hex-literal     ud-suffix   (3) 
+    binary-literal  ud-suffix    (4) 
+    fractional-constant exponent-part(optional) ud-suffix   (5) 
+    digit-sequence      exponent-part           ud-suffix  (6) 
+    character-literal   ud-suffix (7) 
+    string-literal      ud-suffix    (8) 
 
 Examples:
-1-4) user-defined integer literals, such as 12_km
-5-6) user-defined floating-point literals, such as 0.5_Pa
-7) user-defined character literal, such as 'c'_X
-8) user-defined string literal, such as "abd"_L or u"xyz"_M
+
+    1-4) user-defined integer literals, such as 12_km
+    5-6) user-defined floating-point literals, such as 0.5_Pa
+    7) user-defined character literal, such as 'c'_X
+    8) user-defined string literal, such as "abd"_L or u"xyz"_M
 
 ***/
 
@@ -87,6 +91,22 @@ void print(long double h)
 /***************************************** Main Program **********************************/
 int main()
 {
+
+////// Explicit Initialization for basic data types
+
+    int i1;
+    int i2 = int(); // Initilized to 0
+    int i3{};       // Initialized to 0, using initialization list
+
+    std::cout << "int i1: " << i1 << ", i2: " << i2 << ", i3: " << i3 << std::endl;
+
+    float f1, f2=float(), f3{};
+    char c1, c2=char(), c3{}; 
+    
+    std::cout << std::fixed << std::setprecision(3) << "float f1: " << f1 << ", f2: " << f2 << ", f3: " << f3 << std::endl;
+    std::cout << "char c1: " << c1 << ", c2: " << c2 << ", c3: " << c3 << std::endl;
+
+    std::cout << std::endl;
 
 // Height
     long double height = 3.4_cm;        //  The _cm indicates that the height is in terms of cms and 
